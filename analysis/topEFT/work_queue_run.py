@@ -228,9 +228,10 @@ executor_args = {
     'debug_log': 'debug.log',
     'transactions_log': 'tr.log',
     'stats_log': 'stats.log',
-	'tasks_accum_log': 'tasks.log',
+    'tasks_accum_log': 'tasks.log',
+    'filepath': '/var/condor/scratch/ahennes3/coffea-tmp',
 
-    'environment_file': remote_environment.get_environment(),
+    'environment_file': remote_environment.get_environment(unstaged='ignore'),
     'extra_input_files': ["topeft.py"],
 
     'retries': 5,
@@ -266,7 +267,7 @@ executor_args = {
     # control the size of accumulation tasks. Results are
     # accumulated in groups of size chunks_per_accum, keeping at
     # most chunks_per_accum at the same time in memory per task.
-    'chunks_per_accum': 25,
+    'chunks_per_accum': 1000000000000,
     'chunks_accum_in_mem': 2,
 
     # terminate workers on which tasks have been running longer than average.
