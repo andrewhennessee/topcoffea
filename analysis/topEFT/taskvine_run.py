@@ -228,7 +228,7 @@ executor_args = {
     'debug_log': 'debug.log',
     'transactions_log': 'tr.log',
     'stats_log': 'stats.log',
-	'tasks_accum_log': 'tasks.log',
+    'tasks_accum_log': 'tasks.log',
 
     'environment_file': remote_environment.get_environment(),
     'extra_input_files': ["topeft.py"],
@@ -245,8 +245,8 @@ executor_args = {
     # tasks. on resource exhaustion, they are retried with the maximum resource
     # values, if specified below. if a maximum is not specified, the task waits
     # forever until a larger worker connects.
-    'resource_monitor': True,
-    'resources_mode': 'auto',
+    'resource_monitor': False,
+    'resources_mode': 'fixed',
 
     # this resource values may be omitted when using
     # resources_mode: 'auto', but they do make the initial portion
@@ -259,14 +259,12 @@ executor_args = {
     # mode will use the values specified here, so workers need to be at least
     # this large. If left unspecified, tasks will use whole workers in the
     # exploratory mode.
-    # 'cores': 1,
-    # 'disk': 8000,   #MB
-    # 'memory': 10000, #MB
+    'cores': 1,
 
     # control the size of accumulation tasks. Results are
     # accumulated in groups of size chunks_per_accum, keeping at
     # most chunks_per_accum at the same time in memory per task.
-    'chunks_per_accum': 25,
+    'chunks_per_accum': 5,
     'chunks_accum_in_mem': 2,
 
     # terminate workers on which tasks have been running longer than average.
